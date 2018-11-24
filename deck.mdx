@@ -1,0 +1,134 @@
+import { CodeSurfer } from 'mdx-deck-code-surfer';
+
+# Functional Programming
+---
+# What?
+- Paradigm based on first-class functions
+- Supports functional _purity_
+- Outcomes are deterministic
+- Functions can be composed
+- Easy to test
+- Easy to reason about outcomes
+---
+# Pure Functions
+- Produce no side-effects, they are independent of context
+- Pure functions are deterministic, they produce the same output for a given input
+---
+<CodeSurfer
+  title='Deterministic'
+  code={require('!raw-loader!./snippets/deterministic.js')}
+  language='javascript'
+  steps={[
+    { notes: 'Functions are deterministic if, given an input, their output is always the same' },
+    { lines: [3], notes: 'f will always return 3 if its input is 2' }
+  ]}
+/>
+---
+<CodeSurfer
+  title='No Side Effects!'
+  code={require('!raw-loader!./snippets/no-side-effects.js')}
+  language='javascript'
+  steps={[
+    { notes: 'Pure functions are context-free' },
+    { lines: [3], notes: 'This function is pure' },
+    { lines: [5, 6], notes: 'This function is not, it relies on the value of y' },
+    { lines: [10, 12], notes: 'If y changes, the result of the function changes' }
+  ]}
+/>
+---
+# Referential Transparency
+- Pure functions can be said to be referentially transparent,
+- Since their value is the same for a given input, they can be substituted for their return value,
+- Allows for easier memoization and other stuff,
+---
+<CodeSurfer
+  title='Referntial Transparency'
+  code={require('!raw-loader!./snippets/referential-transparency.js')}
+  language='javascript'
+/>
+---
+# First-Class Functions
+- They can be stored in a variable, object, or array
+- They can be passed as an argument,
+- They can be returned from another function,
+---
+# Higher-Order Functions
+- Take a function as input, or
+- Return a function as output, or
+- Both!
+---
+<CodeSurfer
+  title='Higher-Order Functions'
+  code={require('!raw-loader!./snippets/higher-order-functions.js')}
+  language='javascript'
+  steps={[
+    { notes: 'JS has some built-in methods which are higher-order functions' },
+    { lines: [2], notes: 'isEven is a pure function' },
+    { lines: [4], notes: 'filter is a higher-order function, isEven is passed as a function (without evaluation)' }
+  ]}
+/>
+---
+# Currying
+- Since we can return functions, we can partially-apply variables
+- This allows us to "bind" variables and evaluate returned functions later
+---
+<CodeSurfer
+  title='Currying'
+  code={require('!raw-loader!./snippets/curry.js')}
+  language='javascript'
+  steps={[
+    { lines: [1], notes: 'A typical two-arg function' },
+    { lines: [3], notes: 'Can be curried to a function which returns a function' },
+    { lines: [7, 8], notes: 'The second function can be stored as a variable' },
+    { lines: [10, 11], notes: 'and be evaluated later' },
+  ]}
+/>
+---
+# Composition
+- First-Class Functions can be composed
+- Helps us build complexity from a number of small, simple steps
+---
+<CodeSurfer
+  title='Pipe is everything'
+  code={require('!raw-loader!./snippets/pipe.js')}
+  language='javascript'
+  steps={[
+    { lines: [2], notes: 'Pipe takes one or more functions as arguments' },
+    { lines: [3], notes: 'We reduce over the functions' },
+    { lines: [4], notes: 'Calling each, in turn, with the result of the last' },
+    { lines: [8, 9, 10, 12, 13, 14, 15, 16], notes: 'And now we can compose our trivially simple units into more complex systems' }
+  ]}
+/>
+---
+# Immutability
+- If you've noticed, in all of our examples so far, there have been no uses of `let`, or `var`
+- FP favours immutability; the result of one function is passed to the input of another, onward until we end at our result
+- State changes prevent referential transparency
+- Reducers are pure functions
+---
+# Testing
+- Pure, atomic functions are easily testable,
+- If we test small functions, we don't need to test the composition,
+- We can infer the outcome will be as expected,
+---
+<CodeSurfer
+  title='Testing'
+  code={require('!raw-loader!./snippets/testing.js')}
+  language='javascript'
+  steps={[
+    { lines: [4, 15], notes: 'These tests are trivial'},
+    { lines: [24, 25, 26, 27], notes: 'We don\'t need to test the composition, all of our steps are covered!' }
+  ]}
+/>
+---
+# Thoughts
+- These techniques can be used to reduce complex systems into a series of incredibly simple, testable steps,
+- Don't think of it as a replacement to more OOP or imperative techniques - these can all be used in unison to great effect!
+- This is just the beginning, FP is a deep and wide field of study:
+- Linear Algebra
+- Lambda Calculus
+
+---
+# Codebase Example: Selectors
+---
+
