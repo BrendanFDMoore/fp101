@@ -9,15 +9,11 @@ const operations = {
   square: x => x * x,
 }
 
-const doSomeMath = (operation1, operation2) => operand =>
-  operation2(operation1(operand))
+const incrementAfterOperation = operation => operand =>
+  operation(operand) + 1
 
-const doubleTheSquareOf =
-  doSomeMath(operations.square, operations.double)
-const squareAfterIncrementing =
-  doSomeMath(operations.increment, operations.square)
+const doubleThenIncrement = incrementAfterOperation(double)
+const squareThenIncrement = incrementAfterOperation(operations.square)
 
-doubleTheSquareOf(7)
-// ?
-squareAfterIncrementing(5) 
-// ?
+doubleThenIncrement(7) // === ?
+squareThenIncrement(5) // === ?
