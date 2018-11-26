@@ -105,9 +105,9 @@ Why do we mean by this?
     { notes: 'JS lets of treat functions as first-class citizens' },
     { lines: [1, 2], notes: 'We can set up some basic functions' },
     { lines: [3, 4], notes: 'We can assign those as values to more meaningful aliases' },
-    { range: [6, 10], notes: 'We can build an object to bundle ideas' },
-    { range: [12, 13], notes: 'Or create a helper to compose functions together' },
-    { range: [15, 23], notes: 'and then build more interesting effects.' }
+    { range: [6, 10], notes: 'We can assemble an object to bundle ideas' },
+    { range: [12, 13], notes: 'Or accept a function as input' },
+    { range: [15, 23], notes: 'and then build combined effects.' }
   ]}
 />
 ---
@@ -130,25 +130,99 @@ What are they?
   ]}
 />
 ---
+# Arity
+the number of arguments a function has
+
+- Unary/1-ary: a function with *one* argument
+- 2-ary: a function with *two* arguments
+- N-ary: a function with _n_ arguments
+---
+What other specific arity are we familiar with?
+---
+## Ternary operator `? :`
+Three arguments: a condition and two functions
+`(condition, f, g) => if (condition) { f } else { g }`
+---
+# Partial Application
+---
+# Partial Application
+- Providing some, but not all, arguments
+- Produce a new function with some values "built in"
+- Allows us to "bind" some arguments and evaluate returned functions later
+- Resulting function has lower arity (ie, fewer arguments)
+---
+<CodeSurfer
+  title='Partial Application'
+  code={require('!raw-loader!./snippets/partial-application.js')}
+  language='javascript'
+  steps={[
+    { lines: [1], notes: 'A typical binary function' },
+    { lines: [2], notes: 'which we can call with both arguments' },
+    { lines: [4, 5], notes: 'Args can be partially applied to get new 1-ary functions' },
+    { lines: [7, 8], notes: 'which can later be used' },
+  ]}
+/>
+---
 # Currying
-- Since we can return functions, we can partially-apply variables
-- This allows us to "bind" variables and evaluate returned functions later
+
+- Convert N-ary functions into _N_ unary functions
+- Allows for convenient partial application
+<!-- - Allows using a _point-free_ style to reduce cognitive load -->
 ---
 <CodeSurfer
   title='Currying'
   code={require('!raw-loader!./snippets/curry.js')}
   language='javascript'
   steps={[
-    { lines: [1], notes: 'A typical two-arg function' },
-    { lines: [3], notes: 'Can be curried to a function which returns a function' },
-    { lines: [7, 8], notes: 'The second function can be stored as a variable' },
-    { lines: [10, 11], notes: 'and be evaluated later' },
+    { lines: [1, 2], notes: 'The same 2-ary function' },
+    { lines: [4], notes: 'Can be curried to a function which returns a function' },
+    { lines: [6, 7], notes: 'The second function can be stored as a variable' },
+    { lines: [9, 10], notes: 'and be evaluated later' },
+    { lines: [6, 7], notes: 'Curried functions allow for "point-free" style' },
+  ]}
+/>
+---
+# Point-free
+---
+# Point-free
+Omit unecessary arguments
+
+- Smaller, cleaner code to read
+- Less cognitive load
+- More declarative (imposing args is imperative)
+---
+<CodeSurfer
+  title='Point-free'
+  code={require('!raw-loader!./snippets/point-free.js')}
+  language='javascript'
+  steps={[
+    { lines: [1, 2], notes: 'The same 2-ary function... again' },
+    { lines: [3, 4], notes: 'These two partial applications are equivalent' },
+    { lines: [3, 4], notes: 'the curried version allows us to omit the argument' },
   ]}
 />
 ---
 # Composition
-- First-Class Functions can be composed
-- Helps us build complexity from a number of small, simple steps
+Combining the effect of multiple functions together
+
+- Helps us build up complexity from a number of small, simple steps
+- Only First-Class Functions can be composed (why?)
+- Typically expressed as `f∘g(x) = f(g(x))` ("f of g of x")
+---
+<CodeSurfer
+  title='Composition'
+  code={require('!raw-loader!./snippets/compose.js')}
+  language='javascript'
+  steps={[
+    { lines: [1, 2, 3], notes: 'We start with simple functions' },
+    { lines: [5], notes: 'We can combine them manually, of course' },
+    { lines: [7], notes: 'But we can instead define a helper to compose two functions' },
+    { lines: [9, 10], notes: 'Because we expect to do this often' },
+    { lines: [12, 13], notes: 'to simplify complex calculations' },
+  ]}
+/>
+---
+What about more than two functions composed together?
 ---
 <CodeSurfer
   title='Pipe is everything'
@@ -171,7 +245,7 @@ What are they?
 ---
 # Testing
 - Pure, atomic functions are easily testable
-- If we test small functions, we don't need to test the composition
+- If we test small functions, we don't need to test complex composition
 - We can infer the outcome will be as expected
 ---
 <CodeSurfer
@@ -189,9 +263,16 @@ What are they?
 - Not replacement for OOP or imperative techniques, can all be used in unison
 - This is just the beginning, FP is a deep and wide field of study
 - javascript is well-suited for FP
-
+---
+# Caution
+- As with all tools, FP can be mis-used
+- It is entirely possible to create an over-curried mess
+- Always keep an eye on the goal of readability and maintainability
+- Since javascript allows multiple paradigms, _use when appropriate_
 ---
 # Codebase Example: Selectors
 Simplifying our codebase for ease of reasoning and maintenance
 ---
-
+# Exercises 
+- Write `reduce`
+- Write `filter` and `map` using your `reduce`
