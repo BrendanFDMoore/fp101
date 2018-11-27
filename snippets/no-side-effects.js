@@ -8,8 +8,20 @@ const impureFunction = x => {
   return y;
 };
 
-impureFunction(1) === 2
+impureFunction(1) === 2;
 // y === 2
 
 impureFunction(2) === 3;
 // y === 3
+
+const appendDisplayName = student => {
+  student.displayName = `${student.lastName}, ${student.firstName}`;
+  return student;
+};
+
+const student = {
+  firstName: "Dracus",
+  lastName: "Wormwood"
+};
+
+const studentWithDisplayName = appendDisplayName(student);

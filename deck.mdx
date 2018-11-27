@@ -2,19 +2,30 @@ import { CodeSurfer } from 'mdx-deck-code-surfer';
 
 # Functional Programming
 ---
-# What?
+# What
 - Paradigm based on first-class functions
 - Supports functional _purity_
 - Outcomes are deterministic
 - Functions can be composed
 - Follow a _declarative_ style, rather than _imperative_ (what, not how)
 ---
+<CodeSurfer
+  title='Imperative vs. Declarative'
+  code={require('!raw-loader!./snippets/declarative.js')}
+  language='javascript'
+  steps={[
+    { notes: 'A standard example' },
+    { range: [3, 7], notes: 'Imperative' },
+    { lines: [9], notes: 'Declarative' }
+  ]}
+/>
+---
 # Why
 - Easier to test
 - Easier to reason about outcomes
 - Less complexity
 - Ideally, less code
-- Ultimately, fewer bugs
+- Ultimately, because of the above, fewer bugs
 ---
 # Pure Functions
 What are some characteristics?
@@ -43,7 +54,8 @@ What are some characteristics?
     { lines: [1, 3], notes: 'This function is pure' },
     { range: [5, 9], notes: 'What about this one? Why?' },
     { lines: [11, 12], notes: 'This function is impure' },
-    { lines: [14, 15], notes: 'When we call it, value of y can change' }
+    { lines: [14, 15], notes: 'When we call it, value of y can change' },
+    { range: [17, 27], notes: 'What about this one? Why?' },
   ]}
 />
 ---
@@ -54,15 +66,15 @@ What are some characteristics?
   steps={[
     { lines: [1], notes: 'Pure functions are context-free' },
     { lines: [1, 3], notes: 'This function is pure' },
-    { lines: [6], notes: 'What about this one? Why?' },
+    { lines: [5, 6], notes: 'What about this one? Why?' },
     { lines: [5, 6], notes: 'This function is not, it relies on the value of y' },
-    { lines: [10, 12], notes: 'If y changes, the result of the function changes' }
+    { range: [8, 12], notes: 'If y changes, the result of the function changes' }
   ]}
 />
 ---
 # Referential Transparency
 - Pure functions can be said to be referentially transparent
-- Since their value is the same for a given input, they can be substituted for their return value
+- Since their return value is the same for a given input, they can be substituted for their return value
 - Allows for easier memoization, compiler optimization, etc.
 ---
 # Referential Transparency
@@ -188,7 +200,7 @@ What's that?
 ---
 # Point-free
 (aka Tacit Programming)
-Omit unecessary explicit arguments
+Omit unnecessary explicit arguments
 
 - Smaller, cleaner code to read
 - Less cognitive load
@@ -200,8 +212,8 @@ Omit unecessary explicit arguments
   language='javascript'
   steps={[
     { lines: [1, 2], notes: 'The same 2-ary function... again' },
-    { lines: [3, 4], notes: 'These two partial applications are equivalent' },
-    { lines: [3, 4], notes: 'the curried version allows us to omit the argument' },
+    { lines: [4, 5], notes: 'These two partial applications are equivalent' },
+    { lines: [4, 5], notes: 'the curried version allows us to omit the argument' },
   ]}
 />
 ---
@@ -268,7 +280,7 @@ What about more than two functions composed together?
 - javascript is well-suited for FP
 ---
 # Caution
-- As with all tools, FP can be mis-used
+- As with all tools, FP can be misused
 - It is entirely possible to create an over-curried mess
 - Always keep an eye on the goal of readability and maintainability
 - Since javascript allows multiple paradigms, _use when appropriate_
@@ -279,3 +291,7 @@ Simplifying our codebase for ease of reasoning and maintenance
 # Exercises 
 - Write `reduce`
 - Write `filter` and `map` using your `reduce`
+---
+# Additional resources
+- <a target="blank" href="https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea">Eric Elliot's "Composing Software" series</a>
+- <a target="blank" href="https://ramdajs.com/">ramda, a functional utility library</a>
