@@ -1,5 +1,5 @@
-function pipe() {
-  return Array.from(arguments)
+function pipe(...fns) {
+  return fns
     .reduce(
       (a, b) => arg => b(a(arg))
     )
