@@ -276,7 +276,20 @@ We can just write a `compose` (or `pipe`) function for an arbitrary number of ar
   ]}
 />
 ---
-TODO: Pipe + trace for debugging
+# Debugging pipe?
+Some find it helpful to peek at interim values.
+
+I agree!
+---
+<CodeSurfer
+  title='Tap'
+  code={require('!raw-loader!./snippets/tap.js')}
+  language='javascript'
+  steps={[
+    { range: [1, 4], notes: 'Tap is a no-op that lets us "tap into" the pipe'},
+    { range: [6, 12], notes: 'We can add it after any step'},
+  ]}
+/>
 ---
 # Immutability 
 ### TODO: clarify
@@ -318,14 +331,26 @@ TODO: Pipe + trace for debugging
 ---
 # Questions?
 ---
-# Exercises 
-- Write `reduce`
-
-`const reduce = (reducer, initial, arr) => ???`
-
-- Write `filter` and `map` using your `reduce`
----
 # Additional resources
 - <a target="blank" href="https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea">Eric Elliot's "Composing Software" series</a>
 - <a target="blank" href="https://mostly-adequate.gitbooks.io/mostly-adequate-guide/">Prof. Frisby's Mostly Aequate Guide to FP</a>
 - <a target="blank" href="https://ramdajs.com/">ramda, a functional utility library</a>
+---
+# Exercise
+### Analyze some pet survey data
+
+Go to: 
+<br/>
+<a href="https://codepen.io/BrendanFDMoore/pen/WYgwWL">https://codepen.io/BrendanFDMoore/pen/WYgwWL</a>
+<br/>
+and fork
+
+We want to find the average age of all pet owners who are adults.
+
+# Exercises to try later
+- Write a general `reduce` function:
+
+`const reduce = (reducer, initial, arr) => ???`
+
+- Write `filter`, `map`, and `compose` (or `pipe`) using your own `reduce`
+---
