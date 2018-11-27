@@ -17,6 +17,13 @@ import { Head } from 'mdx-deck';
 - Functions can be composed
 - Follow a _declarative_ style, rather than _imperative_ (what, not how)
 ---
+# Why
+- Easier to test
+- Easier to reason about outcomes
+- Less complexity
+- Ideally, less code
+- Ultimately, because of the above, fewer bugs
+---
 <CodeSurfer
   title='Imperative vs. Declarative'
   code={require('!raw-loader!./snippets/declarative.js')}
@@ -28,13 +35,6 @@ import { Head } from 'mdx-deck';
   ]}
 />
 ---
-# Why
-- Easier to test
-- Easier to reason about outcomes
-- Less complexity
-- Ideally, less code
-- Ultimately, because of the above, fewer bugs
----
 # Pure Functions
 What are some characteristics?
 ---
@@ -43,7 +43,7 @@ What are some characteristics?
 - Produce no side-effects
 - Independent of context
 ---
-# Pure Functions in EE
+# Pure Functions in our application
 - Redux Reducers
 ---
 <CodeSurfer
@@ -163,7 +163,7 @@ What are they?
   ]}
 />
 ---
-# HOC in EE
+# HOC in our application
 
 - `connect` from `react-redux`
 - `FetchComponent`
@@ -352,12 +352,15 @@ Go to:
 <br/>
 and fork
 
-We want to find the average age of all pet owners who are adults.
+We want to find the _average age_, by pet type, of all pet owners _who are adults_.
+---
+#### A solution: <a href="https://codepen.io/BrendanFDMoore/pen/QJVERy">https://codepen.io/BrendanFDMoore/pen/QJVERy</a>
 
+##### Not _the_ solution - there are many ways to do it!
+---
 # Exercises to try later
 - Write a general `reduce` function:
 
 `const reduce = (reducer, initial, arr) => ???`
 
 - Write `filter`, `map`, and `compose` (or `pipe`) using your own `reduce`
----
