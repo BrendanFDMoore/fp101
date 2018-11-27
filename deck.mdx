@@ -35,6 +35,9 @@ What are some characteristics?
 - Produce no side-effects
 - Independent of context
 ---
+# Pure Functions in EE
+- Redux Reducers
+---
 <CodeSurfer
   title='Deterministic'
   code={require('!raw-loader!./snippets/deterministic.js')}
@@ -151,6 +154,12 @@ What are they?
     { lines: [4], notes: 'filter is a higher-order function, isEven is passed as a function (without evaluation)' }
   ]}
 />
+---
+# HOC in EE
+
+- `connect` from `react-redux`
+- `FetchComponent`
+- `createSelector` from `reselect`
 ---
 # Arity
 the number of arguments a function has
@@ -318,4 +327,5 @@ TODO: Pipe + trace for debugging
 ---
 # Additional resources
 - <a target="blank" href="https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea">Eric Elliot's "Composing Software" series</a>
+- <a target="blank" href="https://mostly-adequate.gitbooks.io/mostly-adequate-guide/">Prof. Frisby's Mostly Aequate Guide to FP</a>
 - <a target="blank" href="https://ramdajs.com/">ramda, a functional utility library</a>
