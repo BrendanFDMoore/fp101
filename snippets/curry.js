@@ -1,10 +1,10 @@
-const sumTwoArgs = (x, y) => x + y;
-sumTwoArgs(1, 2) === 3;
+const addTwoArgs = (x, y) => x + y;
+addTwoArgs(1, 2) === 3;
 
-const sumTwoArgsCurried = x => y => x + y;
+const addTwoArgsCurried = x => y => x + y;
 
-const addThreeTo = sumTwoArgsCurried(3);
-const addFourTo = sumTwoArgsCurried(4);
+const addThreeTo = addTwoArgsCurried(3);
+const addFourTo = addTwoArgsCurried(4);
 
 addThreeTo(3) // === 6;
 addFourTo(3) // === 7;
