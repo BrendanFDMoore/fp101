@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/stefannew/fp101"
+  },
+  "homepage": "https://brendanfdmoore.github.io/fp101",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "mdx-deck": "^1.7.14",
     "mdx-deck-code-surfer": "^0.5.3",
     "raw-loader": "^0.5.1"
   },
   "scripts": {
-    "start": "mdx-deck deck.mdx"
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build --no-html deck.mdx -d build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   }
 }
